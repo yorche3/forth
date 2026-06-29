@@ -1,3 +1,4 @@
 : main  ( -- ) 
-  ." Hello, World!" cr ;
+  ." Hello, World! from Forth!" cr ;
 main
+bye
