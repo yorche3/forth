@@ -16,10 +16,16 @@
 
 variable arr
 variable len
+variable min-idx
+
+variable swap-tmp
 
 : swap-cells ( addr1 addr2 -- )
-    \ Intercambia los valores de las celdas en addr1 y addr2
-    over @ over @ rot ! swap ! ;
+    \ Intercambia los valores de las celdas en addr1 y addr2.
+    \ Ojo: `!` es ( x addr -- ), así que los dos valores deben cruzarse.
+    dup @ swap-tmp !    \ swap-tmp = valor original de addr2
+    over @ swap !       \ addr2 <- valor original de addr1
+    swap-tmp @ swap ! ; \ addr1 <- valor original de addr2
 
 : selection-sort ( addr n -- )
     \ Si el array tiene 0 o 1 elementos, devuelve el array tal cual
@@ -29,20 +35,22 @@ variable len
     then
     len !
     arr !
-    len @ 1- 0 ?do \ i: 0..(len-2);
-        i          \ min_idx = i
-        len @ i 1+ ?do \ j: (i+1)..(len-1);
-            arr @ min_idx cells + @ \ ( min_idx arr[j] )
-            over arr @ swap-cells + @ \ ( min_idx arr[j] a[min_idx] )
-            < if drop i then \ if arr[j] < arr[min_idx], update min_idx
+    len @ 1- 0 ?do \ i: 0..(len-2)
+        i min-idx ! \ min_idx = i
+        len @ i 1+ ?do \ dentro del bucle interno: i = j (externo), j = i (interno)
+            arr @ i cells + @ \ a[j]
+            arr @ min-idx @ cells + @ \ a[j] a[min_idx]
+            < if i min-idx ! then \ si a[j] < a[min_idx], min_idx = j
         loop
-        \ stack : ( min_idx );
-        arr @ i cells + \ ( min_idx addr_i )
-        swap            \ ( addr_i min_idx )
-        arr @ swap cells + \ ( addr_i addr_min_idx )
-        swap-cells \ Intercambia los elementos en las posiciones i y min_idx
+        i min-idx @ <> if \ intercambia las posiciones i y min_idx
+            arr @ i cells +
+            arr @ min-idx @ cells +
+            swap-cells
+        then
     loop
 ;
+
+variable swapped?
 
 : bubble-sort ( addr count -- )
     dup 1 <= if
@@ -51,39 +59,25 @@ variable len
     then
     len !
     arr !
-    len @ 0 ?do
-        len @ 1- 0 ?do
-            arr @ j cells + @ arr @ j 1+ cells + @
-            2dup <
-            if
-                swap-cells
-            then
-        loop
-    loop
-;
-
-
-variable swapped?
-
-: insertion-sort ( addr count -- )
-    dup 1 <= if
-        2drop
-        exit
-    then
-    begin
+    len @ 1- 0 ?do \ i: 0..(len-2)
         false swapped? !
-        len @ 1- 0 ?do
-            arr @ j cells + @ 
-            arr @ j 1+ cells + @
-            2dup < if
+        len @ 1- i - 0 ?do \ dentro del bucle interno: i = j, j = i (externo)
+            arr @ i cells + @ \ a[j]
+            arr @ i 1+ cells + @ \ a[j] a[j+1]
+            2dup > if \ si a[j] > a[j+1], intercambia
                 2drop
-                arr @ j cells +
-                arr @ j 1+ cells +
+                arr @ i cells +
+                arr @ i 1+ cells +
                 swap-cells
                 true swapped? !
+            else
+                2drop
             then
         loop
-    again \ Repite hasta que no haya más intercambios
+        swapped? @ 0= if
+            leave \ salida temprana: la pasada no hizo ningún intercambio
+        then
+    loop
 ;
 
 variable ins-key
