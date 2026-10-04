@@ -9,7 +9,7 @@ Proyectos en **Forth** (Gforth), interpretados directamente con `gforth`.
 | Módulo | Descripción |
 |--------|-------------|
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `hello_world`, `hello_user`, `calculator`, `numbers` |
-| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort`, `data_structures_basics` |
 
 ---
 
@@ -22,5 +22,9 @@ gforth run-tests.forth
 
 # Naive Sort Tests
 cd core/algorithms/naive_sort/test
+gforth run-tests.forth
+
+# Data Structures Basics Tests
+cd core/algorithms/data_structures_basics/test
 gforth run-tests.forth
 ```
