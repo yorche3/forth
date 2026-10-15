@@ -58,7 +58,7 @@ hellouser/
 : main ( -- )
   cr ." Enter your name: "
   pad 80 accept          \ lee hasta 80 caracteres en pad, deja longitud
-  cr ." Hello, " pad swap type   \ imprime saludo + nombre
+  cr ." Hello, " pad swap type ." !"   \ imprime saludo + nombre
   cr
 ;
 main
@@ -72,7 +72,7 @@ bye
 | `pad` | Dirección de un buffer temporal de 256 bytes (estándar en Forth) |
 | `80` | Límite máximo de caracteres a leer (por seguridad) |
 | `accept` | Lee una línea desde `stdin` al buffer `pad`; deja en la pila la longitud leída |
-| `pad swap type` | Lleva la dirección del buffer a la cima, intercambia con la longitud (`swap`) e imprime la cadena (`type`) |
+| `pad swap type ." !"` | Lleva la dirección del buffer a la cima, intercambia con la longitud (`swap`) e imprime la cadena (`type`) |
 
 > **ES:** `accept ( addr n -- n' )` lee hasta `n` caracteres desde el teclado y los almacena en la dirección `addr`. Devuelve la cantidad real de caracteres leídos (sin incluir el salto de línea).
 > **EN:** `accept ( addr n -- n' )` reads up to `n` characters from the keyboard and stores them at address `addr`. It returns the actual number of characters read (excluding the newline).
@@ -128,8 +128,8 @@ Hello, Ada!
 - **EN:** `pad` is a 256-byte buffer predefined in the ANS Forth specification. It's ideal for temporary operations like reading user input.
 - **ES:** A diferencia de lenguajes como C donde se usa `fgets` + eliminación manual del `\n`, en Forth `accept` ya descarta el salto de línea, simplificando el procesamiento.
 - **EN:** Unlike languages like C where `fgets` + manual `\n` removal is needed, in Forth `accept` already discards the newline, simplifying processing.
-- **ES:** Forth usa la pila como mecanismo principal de paso de datos. `pad swap type` es un ejemplo típico de cómo se manipulan direcciones y longitudes mediante palabras de la pila.
-- **EN:** Forth uses the stack as its primary data passing mechanism. `pad swap type` is a typical example of how addresses and lengths are manipulated using stack words.
+- **ES:** Forth usa la pila como mecanismo principal de paso de datos. `pad swap type ." !"` es un ejemplo típico de cómo se manipulan direcciones y longitudes mediante palabras de la pila.
+- **EN:** Forth uses the stack as its primary data passing mechanism. `pad swap type ." !"` is a typical example of how addresses and lengths are manipulated using stack words.
 
 ---
 
