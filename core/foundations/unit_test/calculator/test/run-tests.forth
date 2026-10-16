@@ -1,7 +1,7 @@
-\ run_tests.forth — Punto de entrada para ejecutar las pruebas del Calculator
+\ run-tests.forth — Punto de entrada para ejecutar las pruebas del Calculator
 \
 \ Uso:
-\   gforth run_tests.forth
+\   gforth run-tests.forth
 \
 \ (ejecutar desde el directorio test/)
 
