@@ -18,7 +18,7 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 |---------|-----------|
 | [`test/test.forth`](test/test.forth) | Framework de testing — `assert-equals`, `assert-compare`, `test-report`. |
 | [`test/calculator_tests.forth`](test/calculator_tests.forth) | Suite de pruebas — 5 tests con `assert-equals`. |
-| [`test/run_tests.forth`](test/run_tests.forth) | Punto de entrada para ejecutar las pruebas. |
+| [`test/run-tests.forth`](test/run-tests.forth) | Punto de entrada para ejecutar las pruebas. |
 
 **Estructura de directorios esperada:**
 
@@ -29,7 +29,7 @@ calculator/
 ├── test/
 │   ├── test.forth               # Framework de testing
 │   ├── calculator_tests.forth   # Suite de pruebas unitarias
-│   └── run_tests.forth          # Punto de entrada
+│   └── run-tests.forth          # Punto de entrada
 └── README.md                    # Este archivo
 ```
 
@@ -42,14 +42,14 @@ calculator/
 Características:
 - **Sin dependencias externas** — todo usa palabras nativas de Forth.
 - **Framework de testing propio** — `test.forth` implementa `assert-equals`, `assert-compare` y `test-report` sin librerías externas.
-- **Ejecución directa** — `gforth test/run_tests.forth` ejecuta todas las pruebas.
+- **Ejecución directa** — `gforth test/run-tests.forth` ejecuta todas las pruebas.
 
 **EN:** This project uses **Gforth** and follows a minimalist approach. No build system or package manager required — the code runs directly with `gforth`.
 
 Features:
 - **No external dependencies** — everything uses native Forth words.
 - **Custom test framework** — `test.forth` implements `assert-equals`, `assert-compare` and `test-report` with no external libraries.
-- **Direct execution** — `gforth test/run_tests.forth` runs all tests.
+- **Direct execution** — `gforth test/run-tests.forth` runs all tests.
 
 ---
 
@@ -147,7 +147,7 @@ include test.forth
 ;
 ```
 
-### `test/run_tests.forth` — Punto de entrada
+### `test/run-tests.forth` — Punto de entrada
 
 **ES:** Incluye la suite y ejecuta todos los tests.
 
@@ -180,7 +180,7 @@ brew install gforth
 
 ```bash
 cd core/foundations/unit_test/calculator/test
-gforth run_tests.forth
+gforth run-tests.forth
 ```
 
 **Salida esperada / Expected output:**
