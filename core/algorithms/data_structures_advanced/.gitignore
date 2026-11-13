@@ -1,0 +1,13 @@
+# Forth — artefactos generados
+# Forth generated artifacts
+
+# Archivos de imagen de Gforth / Gforth image files
+*.image
+*.fi
+
+# Archivos temporales / Temporary files
+*~
+*.bak
+
+# Logs y salida de pruebas / Logs and test output
+*.log
