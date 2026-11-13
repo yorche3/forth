@@ -9,13 +9,34 @@
 include ../src/data_structures_advanced.forth
 include test.forth
 
-\ Suite de prueba (pendiente — se conectará en el paso 4c)
-\ include data-structures-advanced-tests.forth
+include data-structures-advanced-tests.forth
 
 : run-all-tests ( -- )
     init-tests
 
-    \ Las palabras de prueba se llamarán aquí cuando exista la suite
+    test-tree-node-create
+    test-tree-node-absent-links
+    test-tree-node-link-children
+    test-tree-node-traverse-links
+    test-tree-node-unlink-children
+    test-tree-create-empty
+    test-tree-insert-root
+    test-tree-insert-lower-higher
+    test-tree-multilevel
+    test-tree-missing-value
+    test-tree-duplicate
+    test-tree-ordered-insertions
+    test-graph-create-empty
+    test-graph-isolated-vertex
+    test-graph-directed-edge
+    test-graph-duplicate-vertex
+    test-graph-duplicate-edge
+    test-graph-missing-endpoint
+    test-graph-sorted-neighbours
+    test-graph-missing-edge-query
+    test-graph-missing-vertex-neighbours
+    test-graph-self-loop
+    test-graph-neighbour-isolation
 
     test-report
 ;
