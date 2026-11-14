@@ -12,6 +12,7 @@ Los módulos de esta fase trabajan sobre **celdas de memoria**: una secuencia es
 |---|--------|-------------|:-----:|
 | [05](naive_sort/) | [Naive Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | Selection, Bubble e Insertion Sort ($O(n^2)$) sobre celdas | 78 |
 | [06](data_structures_basics/) | [Data Structures Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | Node, LinkedList, Stack y Queue sobre celdas enlazadas | 114 |
+| [07](data_structures_advanced/) | [Data Structures Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | TreeNode, BinaryTree, GraphNode y Graph sobre celdas enlazadas | 180 |
 
 ---
 
@@ -27,12 +28,20 @@ algorithms/
 │   │   ├── naive-sort-tests.forth
 │   │   └── run-tests.forth      # Punto de entrada
 │   └── README.md
-└── data_structures_basics/      # 06_Data_Structures_Basics
+├── data_structures_basics/      # 06_Data_Structures_Basics
+│   ├── src/
+│   │   └── data_structures_basics.forth  # Node, LinkedList, Stack, Queue
+│   ├── test/
+│   │   ├── test.forth           # Framework de testing unitario
+│   │   ├── data-structures-basics-tests.forth
+│   │   └── run-tests.forth      # Punto de entrada
+│   └── README.md
+└── data_structures_advanced/    # 07_Data_Structures_Advanced
     ├── src/
-    │   └── data_structures_basics.forth  # Node, LinkedList, Stack, Queue
+    │   └── data_structures_advanced.forth  # TreeNode, BinaryTree, GraphNode, Graph
     ├── test/
     │   ├── test.forth           # Framework de testing unitario
-    │   ├── data-structures-basics-tests.forth
+    │   ├── data-structures-advanced-tests.forth
     │   └── run-tests.forth      # Punto de entrada
     └── README.md
 ```
@@ -64,6 +73,10 @@ gforth run-tests.forth
 
 # Data Structures Basics Tests
 cd data_structures_basics/test
+gforth run-tests.forth
+
+# Data Structures Advanced Tests
+cd data_structures_advanced/test
 gforth run-tests.forth
 ```
 
